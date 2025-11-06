@@ -330,5 +330,5 @@ For issues or questions, please refer to the code comments or contact the develo
 
 ---
 
-**Built with ❤️ using ASP.NET Core MVC**
+**Built with ❤️ by Anant Mulay**
 
