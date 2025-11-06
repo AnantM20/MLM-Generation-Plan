@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MLM Generation Plan - Complete Setup and User Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .section h3 {
+            color: #0056b3;
+            margin-top: 25px;
+        }
+        .step {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+        }
+        .step-number {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #007bff;
+        }
+        pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .info {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background: #007bff;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f8f9fa;
+            border-left: 3px solid #007bff;
+            border-radius: 4px;
+        }
+        .feature-list li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .screenshot-placeholder {
+            background: #e9ecef;
+            border: 2px dashed #007bff;
+            padding: 40px;
+            text-align: center;
+            border-radius: 5px;
+            margin: 15px 0;
+            color: #6c757d;
+        }
+        .toc {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .toc li {
+            padding: 5px 0;
+        }
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌳 MLM Generation Plan Web Application</h1>
+        <p>Complete Setup Guide & User Manual</p>
+        <p style="font-size: 0.9em; margin-top: 5px;">Version 1.0 | Built with ASP.NET Core MVC</p>
+    </div>
+
+    <div class="section">
+        <h2>📋 Table of Contents</h2>
+        <div class="toc">
+            <ul>
+                <li><a href="#overview">1. Overview</a></li>
+                <li><a href="#prerequisites">2. Prerequisites</a></li>
+                <li><a href="#setup">3. Setup Instructions</a></li>
+                <li><a href="#database">4. Database Setup</a></li>
+                <li><a href="#running">5. Running the Application</a></li>
+                <li><a href="#user-flow">6. Application Flow</a></li>
+                <li><a href="#features">7. Features Walkthrough</a></li>
+                <li><a href="#credentials">8. Default Credentials</a></li>
+                <li><a href="#troubleshooting">9. Troubleshooting</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section" id="overview">
+        <h2>1. Overview</h2>
+        <p>The MLM Generation Plan is a complete web application built with ASP.NET Core MVC that allows users to register, login, and view their generation tree with income reports up to 3 levels.</p>
+        
+        <h3>Key Features:</h3>
+        <ul class="feature-list">
+            <li>User Registration with auto-generated User IDs</li>
+            <li>Secure Login System</li>
+            <li>Dashboard with statistics and generation tree</li>
+            <li>MLM Income Calculation (3 levels)</li>
+            <li>Admin Panel for user management</li>
+            <li>Responsive and modern UI</li>
+        </ul>
+
+        <h3>Technology Stack:</h3>
+        <table>
+            <tr>
+                <th>Component</th>
+                <th>Technology</th>
+            </tr>
+            <tr>
+                <td>Backend Framework</td>
+                <td>ASP.NET Core MVC 8.0</td>
+            </tr>
+            <tr>
+                <td>Programming Language</td>
+                <td>C#</td>
+            </tr>
+            <tr>
+                <td>Database</td>
+                <td>SQL Server (LocalDB)</td>
+            </tr>
+            <tr>
+                <td>ORM</td>
+                <td>Entity Framework Core</td>
+            </tr>
+            <tr>
+                <td>Frontend</td>
+                <td>HTML5, CSS3, Bootstrap 5, jQuery</td>
+            </tr>
+            <tr>
+                <td>Authentication</td>
+                <td>Cookie-based Authentication</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section" id="prerequisites">
+        <h2>2. Prerequisites</h2>
+        <p>Before running the application, ensure you have the following installed:</p>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Visual Studio 2022</strong> (Recommended) or <strong>Visual Studio Code</strong>
+            <ul>
+                <li>Download from: <a href="https://visualstudio.microsoft.com/">https://visualstudio.microsoft.com/</a></li>
+                <li>Make sure to install ".NET desktop development" workload</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>.NET 8.0 SDK</strong>
+            <ul>
+                <li>Download from: <a href="https://dotnet.microsoft.com/download">https://dotnet.microsoft.com/download</a></li>
+                <li>Verify installation by running: <code>dotnet --version</code> in command prompt</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>SQL Server</strong>
+            <ul>
+                <li><strong>Option A:</strong> SQL Server LocalDB (Recommended - comes with Visual Studio)</li>
+                <li><strong>Option B:</strong> SQL Server Express (Free)</li>
+                <li><strong>Option C:</strong> SQL Server Developer Edition (Free)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>SQL Server Management Studio (SSMS)</strong> (Optional but Recommended)
+            <ul>
+                <li>Download from: <a href="https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms">Microsoft Download Center</a></li>
+                <li>Used for executing SQL scripts and managing the database</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Important:</strong> Make sure all prerequisites are installed and working before proceeding to the setup steps.
+        </div>
+    </div>
+
+    <div class="section" id="setup">
+        <h2>3. Setup Instructions</h2>
+        
+        <h3>Step 1: Extract/Copy Project Files</h3>
+        <div class="step">
+            <span class="step-number">1</span>
+            Ensure all project files are in a folder (e.g., <code>C:\MLM</code> or <code>Desktop\MLM</code>)
+        </div>
+
+        <h3>Step 2: Verify Project Structure</h3>
+        <div class="step">
+            <span class="step-number">2</span>
+            Verify that your project folder contains:
+            <ul>
+                <li><code>MLMApp.csproj</code> - Project file</li>
+                <li><code>Program.cs</code> - Application startup</li>
+                <li><code>appsettings.json</code> - Configuration</li>
+                <li><code>Controllers/</code> - Controllers folder</li>
+                <li><code>Models/</code> - Models folder</li>
+                <li><code>Views/</code> - Views folder</li>
+                <li><code>Services/</code> - Services folder</li>
+                <li><code>Data/</code> - Data access folder</li>
+                <li><code>Database/MLMDb.sql</code> - Database script</li>
+                <li><code>wwwroot/</code> - Static files folder</li>
+            </ul>
+        </div>
+
+        <h3>Step 3: Restore NuGet Packages</h3>
+        <div class="step">
+            <span class="step-number">3</span>
+            Open Command Prompt or PowerShell in the project folder and run:
+            <pre><code>dotnet restore</code></pre>
+            <p>This will download all required NuGet packages.</p>
+        </div>
+
+        <div class="success">
+            <strong>✓ Success:</strong> If packages restore successfully, you'll see "Restore succeeded" message.
+        </div>
+    </div>
+
+    <div class="section" id="database">
+        <h2>4. Database Setup</h2>
+        
+        <h3>Method 1: Using SQL Server Management Studio (SSMS) - Recommended</h3>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            Open <strong>SQL Server Management Studio (SSMS)</strong>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            Connect to your SQL Server instance:
+            <ul>
+                <li><strong>Server Name:</strong> <code>(localdb)\mssqllocaldb</code> (for LocalDB)</li>
+                <li>Or use your SQL Server instance name</li>
+                <li><strong>Authentication:</strong> Windows Authentication</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            Open the SQL script file: <code>Database\MLMDb.sql</code>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            Execute the script by clicking <strong>Execute</strong> button (F5) or pressing <code>Ctrl+E</code>
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            Verify the execution:
+            <ul>
+                <li>Check the Messages tab for "Database setup completed successfully!"</li>
+                <li>Verify database "MLMDb" is created in Object Explorer</li>
+                <li>Verify "Users" table exists with sample data</li>
+            </ul>
+        </div>
+
+        <h3>Method 2: Using Command Line (sqlcmd)</h3>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            Open Command Prompt or PowerShell
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            Navigate to the project folder and run:
+            <pre><code>sqlcmd -S (localdb)\mssqllocaldb -i Database\MLMDb.sql</code></pre>
+            
+            <p><strong>Note:</strong> If using a different SQL Server instance, replace <code>(localdb)\mssqllocaldb</code> with your server name.</p>
+        </div>
+
+        <div class="info">
+            <strong>ℹ️ Database Connection:</strong> The default connection string uses LocalDB. If you're using a different SQL Server instance, update the connection string in <code>appsettings.json</code>:
+            <pre><code>"ConnectionStrings": {
+  "DefaultConnection": "Server=YOUR_SERVER_NAME;Database=MLMDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+}</code></pre>
+        </div>
+
+        <div class="success">
+            <strong>✓ Database Ready:</strong> After successful execution, you should have:
+            <ul>
+                <li>Database: MLMDb</li>
+                <li>Table: Users</li>
+                <li>16 sample users (1 admin + 15 regular users)</li>
+                <li>Complete 3-level generation hierarchy</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section" id="running">
+        <h2>5. Running the Application</h2>
+        
+        <h3>Method 1: Using Visual Studio (Recommended)</h3>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            Open Visual Studio 2022
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            Click <strong>File → Open → Project/Solution</strong>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            Navigate to the project folder and select <code>MLMApp.csproj</code>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            Wait for Visual Studio to restore packages and load the project
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            Press <strong>F5</strong> or click the <strong>Run</strong> button (green play icon)
+        </div>
+
+        <div class="step">
+            <span class="step-number">6</span>
+            The application will:
+            <ul>
+                <li>Build the project</li>
+                <li>Start the web server</li>
+                <li>Open your default browser</li>
+                <li>Navigate to the login page (usually <code>https://localhost:5001</code> or <code>http://localhost:5000</code>)</li>
+            </ul>
+        </div>
+
+        <h3>Method 2: Using Command Line</h3>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            Open Command Prompt or PowerShell
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            Navigate to the project folder:
+            <pre><code>cd C:\path\to\MLM</code></pre>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            Run the application:
+            <pre><code>dotnet run</code></pre>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            Look for output like:
+            <pre><code>info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: https://localhost:5001
+      Now listening on: http://localhost:5000</code></pre>
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            Open your browser and navigate to the URL shown in the output (usually <code>https://localhost:5001</code>)
+        </div>
+
+        <div class="info">
+            <strong>ℹ️ First Run:</strong> On first run, you may see a security warning about the SSL certificate. Click "Advanced" and "Proceed to localhost" to continue.
+        </div>
+
+        <div class="success">
+            <strong>✓ Application Running:</strong> You should now see the Login page in your browser!
+        </div>
+    </div>
+
+    <div class="section" id="user-flow">
+        <h2>6. Application Flow</h2>
+        
+        <h3>6.1 User Registration Flow</h3>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Navigate to Registration Page</strong>
+            <ul>
+                <li>Click "Register" link on the login page</li>
+                <li>Or navigate to: <code>/Account/Register</code></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Fill Registration Form</strong>
+            <ul>
+                <li><strong>Full Name:</strong> Enter your full name (required)</li>
+                <li><strong>Email:</strong> Enter valid email address (required, must be unique)</li>
+                <li><strong>Mobile Number:</strong> Enter 10-15 digit mobile number (required, must be unique)</li>
+                <li><strong>Password:</strong> Enter password (minimum 6 characters, required)</li>
+                <li><strong>Confirm Password:</strong> Re-enter password to confirm (required)</li>
+                <li><strong>Sponsor ID:</strong> Enter sponsor's User ID (optional, format: REG####)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Submit Registration</strong>
+            <ul>
+                <li>Click "Register" button</li>
+                <li>System validates all fields (client-side and server-side)</li>
+                <li>If Sponsor ID provided, system validates it exists and is active</li>
+                <li>System generates unique User ID (e.g., REG1001, REG1002)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>Registration Success</strong>
+            <ul>
+                <li>Success message displayed with your User ID</li>
+                <li>Redirected to Login page</li>
+                <li>Save your User ID for future reference</li>
+            </ul>
+        </div>
+
+        <h3>6.2 Login Flow</h3>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Navigate to Login Page</strong>
+            <ul>
+                <li>Default page when application starts</li>
+                <li>Or navigate to: <code>/Account/Login</code></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Enter Credentials</strong>
+            <ul>
+                <li><strong>Email:</strong> Enter your registered email</li>
+                <li><strong>Password:</strong> Enter your password</li>
+                <li><strong>Remember Me:</strong> (Optional) Check to stay logged in</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Click Login</strong>
+            <ul>
+                <li>System validates credentials</li>
+                <li>Checks if account is active</li>
+                <li>Creates authentication session</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>Redirect to Dashboard</strong>
+            <ul>
+                <li>On successful login, redirected to Dashboard</li>
+                <li>If admin, Admin Panel link appears in navigation</li>
+            </ul>
+        </div>
+
+        <h3>6.3 Dashboard Flow</h3>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>View User Information</strong>
+            <ul>
+                <li>User Name and User ID displayed at top</li>
+                <li>Sponsor ID shown (if any)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>View Statistics Cards</strong>
+            <ul>
+                <li><strong>Direct Referrals:</strong> Count of direct referrals (Level 1)</li>
+                <li><strong>Total Team Members:</strong> Total members in all 3 levels</li>
+                <li><strong>Total Income:</strong> Calculated income from all levels</li>
+                <li><strong>Sponsor:</strong> Your sponsor's User ID</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>View Generation Income Report</strong>
+            <ul>
+                <li>Table showing income breakdown by level</li>
+                <li>Level 1: ₹100 per member</li>
+                <li>Level 2: ₹50 per member</li>
+                <li>Level 3: ₹25 per member</li>
+                <li>Grand Total displayed</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>View Generation Tree</strong>
+            <ul>
+                <li>Visual tree representation</li>
+                <li>Shows hierarchy up to 3 levels</li>
+                <li>Interactive and expandable</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            <strong>View Level-wise Members</strong>
+            <ul>
+                <li>Cards showing members at each level</li>
+                <li>Member name, User ID, and income per member</li>
+            </ul>
+        </div>
+
+        <h3>6.4 Admin Panel Flow</h3>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Access Admin Panel</strong>
+            <ul>
+                <li>Login as admin user</li>
+                <li>Click "Admin Panel" link in navigation</li>
+                <li>Or navigate to: <code>/Admin</code></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>View All Users</strong>
+            <ul>
+                <li>Table showing all registered users</li>
+                <li>User ID, Name, Email, Mobile, Sponsor ID</li>
+                <li>Registration Date and Status</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>View User Details</strong>
+            <ul>
+                <li>Click "View Details" (eye icon) for any user</li>
+                <li>See complete user information</li>
+                <li>View user's statistics and income report</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>View Generation Tree</strong>
+            <ul>
+                <li>Click "View Tree" (sitemap icon) for any user</li>
+                <li>See complete generation tree for that user</li>
+                <li>Shows up to 3 levels</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            <strong>Activate/Deactivate Users</strong>
+            <ul>
+                <li>Click "Deactivate" (ban icon) to deactivate a user</li>
+                <li>Click "Activate" (check icon) to activate a user</li>
+                <li>Confirmation dialog appears before action</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section" id="features">
+        <h2>7. Features Walkthrough</h2>
+        
+        <h3>7.1 Income Calculation Logic</h3>
+        <p>The MLM income calculation follows this structure:</p>
+        <table>
+            <tr>
+                <th>Level</th>
+                <th>Description</th>
+                <th>Income Per Member</th>
+            </tr>
+            <tr>
+                <td>Level 1</td>
+                <td>Direct Referrals</td>
+                <td>₹100</td>
+            </tr>
+            <tr>
+                <td>Level 2</td>
+                <td>Referrals of Level 1 members</td>
+                <td>₹50</td>
+            </tr>
+            <tr>
+                <td>Level 3</td>
+                <td>Referrals of Level 2 members</td>
+                <td>₹25</td>
+            </tr>
+        </table>
+
+        <div class="info">
+            <strong>Example Calculation:</strong>
+            <p>If user REG1001 has:</p>
+            <ul>
+                <li>3 direct referrals (Level 1): 3 × ₹100 = ₹300</li>
+                <li>5 members in Level 2: 5 × ₹50 = ₹250</li>
+                <li>6 members in Level 3: 6 × ₹25 = ₹150</li>
+                <li><strong>Total Income: ₹700</strong></li>
+            </ul>
+        </div>
+
+        <h3>7.2 User ID Generation</h3>
+        <ul>
+            <li>Auto-generated starting from REG1001</li>
+            <li>Increments sequentially (REG1002, REG1003, etc.)</li>
+            <li>Format: REG followed by 4-digit number</li>
+            <li>Unique and cannot be duplicated</li>
+        </ul>
+
+        <h3>7.3 Sponsor Validation</h3>
+        <ul>
+            <li>Sponsor ID must be in format: REG####</li>
+            <li>Sponsor must exist in database</li>
+            <li>Sponsor must be active</li>
+            <li>Validation happens both client-side and server-side</li>
+        </ul>
+
+        <h3>7.4 Security Features</h3>
+        <ul>
+            <li>Password hashing (Base64 encoding)</li>
+            <li>Cookie-based authentication</li>
+            <li>CSRF protection</li>
+            <li>Role-based authorization</li>
+            <li>Input validation and sanitization</li>
+        </ul>
+    </div>
+
+    <div class="section" id="credentials">
+        <h2>8. Default Credentials</h2>
+        
+        <h3>Admin Account</h3>
+        <table>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><code>admin@mlm.com</code></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><code>Admin@123</code></td>
+            </tr>
+            <tr>
+                <td>User ID</td>
+                <td><code>REG1000</code></td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td>Admin</td>
+            </tr>
+        </table>
+
+        <h3>Sample User Accounts</h3>
+        <table>
+            <tr>
+                <th>User ID</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Sponsor ID</th>
+            </tr>
+            <tr>
+                <td>REG1001</td>
+                <td>john.doe@example.com</td>
+                <td rowspan="15">Test@123</td>
+                <td>None (Root)</td>
+            </tr>
+            <tr>
+                <td>REG1002</td>
+                <td>alice.smith@example.com</td>
+                <td>REG1001</td>
+            </tr>
+            <tr>
+                <td>REG1003</td>
+                <td>bob.johnson@example.com</td>
+                <td>REG1001</td>
+            </tr>
+            <tr>
+                <td>REG1004</td>
+                <td>carol.williams@example.com</td>
+                <td>REG1001</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: center;"><em>... and 11 more sample users</em></td>
+            </tr>
+        </table>
+
+        <div class="info">
+            <strong>ℹ️ Note:</strong> All sample users (except admin) use the password: <code>Test@123</code>
+        </div>
+    </div>
+
+    <div class="section" id="troubleshooting">
+        <h2>9. Troubleshooting</h2>
+        
+        <h3>Problem: Database Connection Error</h3>
+        <div class="step">
+            <strong>Solution:</strong>
+            <ul>
+                <li>Verify SQL Server is running</li>
+                <li>Check connection string in <code>appsettings.json</code></li>
+                <li>For LocalDB, verify it's installed: <code>sqllocaldb info MSSQLLocalDB</code></li>
+                <li>Ensure database MLMDb exists and was created successfully</li>
+            </ul>
+        </div>
+
+        <h3>Problem: "dotnet" command not found</h3>
+        <div class="step">
+            <strong>Solution:</strong>
+            <ul>
+                <li>Install .NET 8.0 SDK from <a href="https://dotnet.microsoft.com/download">Microsoft's website</a></li>
+                <li>Restart your terminal/command prompt after installation</li>
+                <li>Verify installation: <code>dotnet --version</code></li>
+            </ul>
+        </div>
+
+        <h3>Problem: NuGet Package Restore Fails</h3>
+        <div class="step">
+            <strong>Solution:</strong>
+            <ul>
+                <li>Check internet connection</li>
+                <li>Clear NuGet cache: <code>dotnet nuget locals all --clear</code></li>
+                <li>Try restore again: <code>dotnet restore</code></li>
+                <li>Check firewall settings</li>
+            </ul>
+        </div>
+
+        <h3>Problem: Build Errors</h3>
+        <div class="step">
+            <strong>Solution:</strong>
+            <ul>
+                <li>Ensure .NET 8.0 SDK is installed</li>
+                <li>Verify all NuGet packages are restored</li>
+                <li>Clean solution: <code>dotnet clean</code></li>
+                <li>Rebuild: <code>dotnet build</code></li>
+                <li>Check for missing dependencies</li>
+            </ul>
+        </div>
+
+        <h3>Problem: SSL Certificate Warning</h3>
+        <div class="step">
+            <strong>Solution:</strong>
+            <ul>
+                <li>This is normal for development</li>
+                <li>Click "Advanced" in browser</li>
+                <li>Click "Proceed to localhost"</li>
+                <li>Or use HTTP instead of HTTPS: <code>http://localhost:5000</code></li>
+            </ul>
+        </div>
+
+        <h3>Problem: Foreign Key Constraint Error</h3>
+        <div class="step">
+            <strong>Solution:</strong>
+            <ul>
+                <li>Ensure database script executed completely</li>
+                <li>Verify foreign key constraint exists: <code>FK_Users_Sponsor</code></li>
+                <li>Check that UserId column has unique constraint</li>
+                <li>Re-run database script if needed</li>
+            </ul>
+        </div>
+
+        <h3>Problem: Application Won't Start</h3>
+        <div class="step">
+            <strong>Solution:</strong>
+            <ul>
+                <li>Check if port 5000/5001 is already in use</li>
+                <li>Close other applications using those ports</li>
+                <li>Check application logs for errors</li>
+                <li>Verify database connection string</li>
+                <li>Ensure database exists and is accessible</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>10. Additional Resources</h2>
+        
+        <h3>Project Files</h3>
+        <ul>
+            <li><strong>README.md</strong> - Complete project documentation</li>
+            <li><strong>PROJECT_SUMMARY.md</strong> - Project completion summary</li>
+            <li><strong>Database/MLMDb.sql</strong> - Database creation script</li>
+        </ul>
+
+        <h3>Useful Commands</h3>
+        <pre><code># Restore packages
+dotnet restore
+
+# Build project
+dotnet build
+
+# Run application
+dotnet run
+
+# Clean solution
+dotnet clean
+
+# Watch for changes (auto-reload)
+dotnet watch run</code></pre>
+
+        <h3>Ports Used</h3>
+        <ul>
+            <li><strong>HTTPS:</strong> 5001 (default)</li>
+            <li><strong>HTTP:</strong> 5000 (default)</li>
+        </ul>
+
+        <div class="info">
+            <strong>ℹ️ Changing Ports:</strong> To use different ports, edit <code>Properties/launchSettings.json</code> or use command line: <code>dotnet run --urls "http://localhost:8080"</code>
+        </div>
+    </div>
+
+    <div class="section" style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white; text-align: center;">
+        <h2 style="color: white; border: none;">🎉 Ready to Use!</h2>
+        <p>Your MLM Generation Plan application is now ready to use. Follow the steps above to get started!</p>
+        <p style="font-size: 0.9em; margin-top: 20px;">
+            <strong>Built with ❤️ using ASP.NET Core MVC</strong><br>
+            Version 1.0 | 2024
+        </p>
+    </div>
+
+</body>
+</html>
+

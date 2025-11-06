@@ -1,0 +1,145 @@
+@model TreeNodeViewModel
+@{
+    ViewData["Title"] = "Generation Tree";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="text-primary">
+            <i class="fas fa-sitemap"></i> Generation Tree for @ViewBag.UserName (@ViewBag.UserId)
+        </h2>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Admin Panel
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-project-diagram"></i> Generation Tree (Up to 3 Levels)
+                </h4>
+            </div>
+            <div class="card-body">
+                <div id="generationTree" class="tree-container">
+                    <!-- Tree will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            renderTree(@Html.Raw(Json.Serialize(Model)), $('#generationTree'));
+        });
+
+        function renderTree(node, container) {
+            if (!node || !node.userId) {
+                container.html('<div class="alert alert-info">No generation tree data available.</div>');
+                return;
+            }
+
+            var html = '<div class="tree-node-wrapper">';
+            html += '<div class="tree-node ' + (node.isActive ? 'active' : 'inactive') + '">';
+            html += '<div class="node-content">';
+            html += '<div class="node-name"><strong>' + node.fullName + '</strong></div>';
+            html += '<div class="node-id">' + node.userId + '</div>';
+            html += '<div class="node-email">' + node.email + '</div>';
+            html += '</div>';
+            html += '</div>';
+
+            if (node.children && node.children.length > 0) {
+                html += '<div class="tree-children">';
+                node.children.forEach(function(child) {
+                    html += '<div class="tree-child">';
+                    var childContainer = $('<div></div>');
+                    renderTree(child, childContainer);
+                    html += childContainer.html();
+                    html += '</div>';
+                });
+                html += '</div>';
+            }
+
+            html += '</div>';
+            container.html(html);
+        }
+    </script>
+    <style>
+        .tree-container {
+            padding: 20px;
+            overflow-x: auto;
+        }
+        .tree-node-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tree-node {
+            background: #007bff;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin: 10px;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .tree-node.inactive {
+            background: #6c757d;
+        }
+        .node-content {
+            display: flex;
+            flex-direction: column;
+        }
+        .node-name {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .node-id {
+            font-size: 0.9em;
+            opacity: 0.95;
+            margin-top: 5px;
+        }
+        .node-email {
+            font-size: 0.85em;
+            opacity: 0.85;
+            margin-top: 3px;
+        }
+        .tree-children {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            position: relative;
+        }
+        .tree-children::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background: #ccc;
+        }
+        .tree-child {
+            margin: 0 15px;
+            position: relative;
+        }
+        .tree-child::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background: #ccc;
+        }
+    </style>
+}
+

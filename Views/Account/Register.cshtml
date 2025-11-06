@@ -1,0 +1,87 @@
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "User Registration";
+}
+
+<div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-6">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-gradient-primary text-white text-center py-4">
+                <h3 class="card-title mb-0">
+                    <i class="fas fa-user-plus fa-2x mb-2"></i><br>
+                    User Registration
+                </h3>
+                <p class="mb-0 mt-2 opacity-75">Join our MLM network today!</p>
+            </div>
+            <div class="card-body p-4">
+                <form asp-controller="Account" asp-action="Register" method="post" id="registerForm">
+                    <div asp-validation-summary="All" class="alert alert-danger" role="alert"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="FullName" class="form-label">
+                            <i class="fas fa-user"></i> Full Name <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="FullName" class="form-control" placeholder="Enter your full name" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">
+                            <i class="fas fa-envelope"></i> Email <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="Enter your email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="MobileNumber" class="form-label">
+                            <i class="fas fa-phone"></i> Mobile Number <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="MobileNumber" class="form-control" placeholder="Enter your mobile number" />
+                        <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label">
+                            <i class="fas fa-lock"></i> Password <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Enter password (min 6 characters)" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ConfirmPassword" class="form-label">
+                            <i class="fas fa-lock"></i> Confirm Password <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm your password" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="SponsorId" class="form-label">
+                            <i class="fas fa-id-card"></i> Sponsor ID <span class="text-muted">(Optional)</span>
+                        </label>
+                        <input asp-for="SponsorId" class="form-control" placeholder="Enter sponsor ID (e.g., REG1001)" />
+                        <small class="form-text text-muted">If you have a sponsor, enter their User ID here.</small>
+                        <span asp-validation-for="SponsorId" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+                    </div>
+
+                    <div class="mt-3 text-center">
+                        <p>Already have an account? <a asp-action="Login">Login here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

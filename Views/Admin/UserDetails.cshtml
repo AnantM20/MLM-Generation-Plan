@@ -1,0 +1,151 @@
+@model DashboardViewModel
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="text-primary">
+            <i class="fas fa-user"></i> User Details - @Model.User.FullName
+        </h2>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Admin Panel
+        </a>
+    </div>
+</div>
+
+<!-- User Information -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0"><i class="fas fa-info-circle"></i> User Information</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>User ID</th>
+                        <td><strong>@Model.User.UserId</strong></td>
+                    </tr>
+                    <tr>
+                        <th>Full Name</th>
+                        <td>@Model.User.FullName</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>@Model.User.Email</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile Number</th>
+                        <td>@Model.User.MobileNumber</td>
+                    </tr>
+                    <tr>
+                        <th>Sponsor ID</th>
+                        <td>@(Model.User.SponsorId ?? "None")</td>
+                    </tr>
+                    <tr>
+                        <th>Registration Date</th>
+                        <td>@Model.User.RegistrationDate.ToString("dd/MM/yyyy HH:mm")</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>
+                            @if (Model.User.IsActive)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inactive</span>
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0"><i class="fas fa-chart-bar"></i> Statistics</h4>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-6 mb-3">
+                        <div class="p-3 bg-light rounded">
+                            <h3 class="text-primary">@Model.TotalDirectReferrals</h3>
+                            <small class="text-muted">Direct Referrals</small>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="p-3 bg-light rounded">
+                            <h3 class="text-success">@Model.TotalTeamMembers</h3>
+                            <small class="text-muted">Team Members</small>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="p-3 bg-light rounded">
+                            <h3 class="text-warning">₹@Model.TotalIncome.ToString("N2")</h3>
+                            <small class="text-muted">Total Income</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Generation Income Report -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-chart-line"></i> Generation Income Report
+                </h4>
+            </div>
+            <div class="card-body">
+                @if (Model.GenerationLevels.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Level</th>
+                                    <th>Member Count</th>
+                                    <th>Income Per Member</th>
+                                    <th>Total Income</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var level in Model.GenerationLevels)
+                                {
+                                    <tr>
+                                        <td><span class="badge bg-primary">Level @level.Level</span></td>
+                                        <td><strong>@level.MemberCount</strong></td>
+                                        <td>₹@level.IncomePerMember.ToString("N2")</td>
+                                        <td><strong class="text-success">₹@level.TotalIncome.ToString("N2")</strong></td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-primary">
+                                    <th colspan="3">Grand Total</th>
+                                    <th>₹@Model.TotalIncome.ToString("N2")</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> No referrals yet.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
