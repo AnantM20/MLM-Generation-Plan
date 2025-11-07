@@ -1,4 +1,5 @@
-# MLM Generation Plan Web Application
+# MLM Generation Plan Web Application : **Built with ❤️ by Anant Mulay**
+
 
 A complete Multi-Level Marketing (MLM) Generation Plan web application built with ASP.NET Core MVC, C#, SQL Server, HTML, CSS, and Bootstrap.
 
@@ -297,28 +298,8 @@ git branch -M main
 git push -u origin main
 ```
 
-**Detailed Instructions:** See [GITHUB_SETUP.md](GITHUB_SETUP.md)
 
-### Free Deployment Options
 
-This application can be deployed for FREE on:
-
-1. **Azure App Service** (Free Tier)
-   - 1GB RAM, 60 minutes compute/day
-   - Auto-deploy from GitHub
-   - See [DEPLOYMENT.md](DEPLOYMENT.md) for details
-
-2. **Railway** (Free $5 credit/month)
-   - Easy setup, auto-deploy from GitHub
-   - Includes free PostgreSQL database
-   - See [DEPLOYMENT.md](DEPLOYMENT.md) for details
-
-3. **Render** (Free Tier)
-   - Free tier available
-   - Auto-deploy from GitHub
-   - See [DEPLOYMENT.md](DEPLOYMENT.md) for details
-
-**Full Deployment Guide:** See [DEPLOYMENT.md](DEPLOYMENT.md)
 
 ## License
 
@@ -326,7 +307,7 @@ This project is created for educational/demonstration purposes.
 
 ## Support
 
-For issues or questions, please refer to the code comments or contact the development team.
+For issues or questions, please refer to the code comments or contact the Anant .
 
 ---
 
